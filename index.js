@@ -1,6 +1,7 @@
 import { createServer } from 'http';
 import staticHandler from 'serve-handler';
 import ws, { WebSocketServer } from 'ws';
+import { readFile, writeFile } from 'fs/promises';
 
 /**
  * Globals.
@@ -10,9 +11,8 @@ const server = createServer((req, res) => {
     return staticHandler(req, res, { public: 'public' })
 });
 
-const wss       = new WebSocketServer({ server });
-const g_users   = [];
-const g_history = [];
+const wss     = new WebSocketServer({ server });
+const g_users = [];
 
 /**
  * WebSocket handlers.
@@ -37,10 +37,6 @@ wss.on('connection', (client) => {
 
                 case 'users':
                     action_get_users(client);
-                    break;
-
-                case 'history':
-                    action_get_history(client);
                     break;
 
                 case 'message':
@@ -84,17 +80,7 @@ function action_send_message(msg) {
         time: new Date(),
     };
 
-    g_history.push(message_data);
     broadcast('message', message_data);
-}
-
-/**
- * Get chat history for clients.
- * 
- * @param {object} client 
- */
-function action_get_history(client) {
-    client_send(client, 'history', g_history);
 }
 
 /**
@@ -119,7 +105,7 @@ function action_login(msg, client) {
     }
 
     broadcast('add_user', msg.data);
-    add_user(client, msg.data.username, msg.data.color);
+    add_user(client, msg.data.username, msg.data.color, new Date());
 }
 
 /**
@@ -190,11 +176,12 @@ function get_users() {
  * @param {string} username 
  * @param {string} color 
  */
-function add_user(client, username, color) {
+function add_user(client, username, color, time) {
     g_users.push({
         client: client,
         username: username,
-        color: color
+        color: color,
+        time: time
     });
 }
 

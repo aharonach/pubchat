@@ -65,7 +65,6 @@ class Chat {
 
     init_ui() {
         this.ws_send_message('users');
-        this.ws_send_message('history');
     }
 
     init_color_picker() {
@@ -139,10 +138,6 @@ class Chat {
 
             case 'add_user':
                 this.add_user(data);
-                break;
-
-            case 'history':
-                this.init_chat_history(data);
                 break;
 
             case 'message':
@@ -224,11 +219,6 @@ class Chat {
     /*************************************************************
      * UI Manipulation.
      *************************************************************/
-
-    init_chat_history(history) {
-        this.#elements.chat.innerHTML = '';
-        history.forEach(chat_message => this.add_chat_message(chat_message, null));
-    }
 
     init_users(users) {
         this.#elements.users.innerHTML = '';
