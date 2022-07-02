@@ -9,11 +9,6 @@ class Chat {
 
     #storage = window.localStorage;
 
-    /* #endpoints = {
-        base: this.#base_uri + '/register/',
-        message: this.#base_uri + '/message/',
-    } */
-
     #forms = {
         register: document.getElementById('register'),
         message: document.getElementById('send-message')
