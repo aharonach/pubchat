@@ -1,0 +1,89 @@
+.chat-wrapper {
+    height: 100vh;
+}
+
+[class*="color-"] {
+    color: var(--bs-white);
+}
+
+.color-blue {
+    background-color: var(--bs-blue);
+}
+
+.color-indigo {
+    background-color: var(--bs-indigo);
+}
+
+.color-purple {
+    background-color: var(--bs-purple);
+}
+
+.color-pink {
+    background-color: var(--bs-pink);
+}
+
+.color-red {
+    background-color: var(--bs-red);
+}
+
+.color-orange {
+    background-color: var(--bs-orange);
+}
+
+.color-green {
+    background-color: var(--bs-green);
+}
+
+.color-gray {
+    background-color: var(--bs-gray);
+}
+
+.color-black {
+    background-color: var(--bs-black);
+}
+
+.message .message-inner .message-content {
+    max-width: 600px;
+    min-width: 150px;
+    border-radius: 10px 30px 30px 30px;
+    display: inline-block;
+    width: auto;
+}
+
+.message.message-self .message-inner .message-content {
+    border-radius: 30px 10px 30px 30px;
+}
+
+.avatar {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.message-time {
+    font-size: 75%;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10%);
+    color: var(--bs-gray-600);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+
+.message-content:hover + .message-time {
+    visibility: visible;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.chat .messages {
+    overflow: auto;
+    height: calc(100vh - 48px);
+}
+
+.message.fade {
+    transform: translate(0, -50px);
+    transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+.message.fade.show {
+    transform: translate(0, 0);
+}

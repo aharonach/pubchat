@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PubChat</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="root" class="container shadow-lg">
+        <div class="chat-wrapper row overflow-hidden">
+            <aside class="users border-end py-2 col-sm-12 col-md-3 shadow-sm">
+                <ul id="users" class="list-group list-group-flush"></ul>
+            </aside>
+            <main class="chat col-sm-12 col-md-9 p-0">
+                <div class="position-relative overflow-hidden">
+                    <div class="messages p-3 align-items-end flex-grow-1">
+                        <div id="messages" class="messages-inner"></div>
+                    </div>
+                    <div class="send-message w-100">
+                        <form id="send-message">
+                            <fieldset class="d-flex" disabled>
+                                <div class="flex-grow-1">
+                                    <div class="text-box-wrapper border-top">
+                                        <input id="text-box" type="text" name="message" class="form-control form-control-lg rounded-0 border-0" placeholder="Type your message...">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100 rounded-0"><i class="bi bi-send"></i> Send</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div id="register-modal" class="modal modal-dialog-centered fade d-none" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center display-6">PubChat</h3>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-error" class="alert alert-danger d-none" role="alert"></div>
+                    <form id="register">
+                        <div class="text-box-wrapper">
+                            <div class="mb-4 form-floating">
+                                <input id="username" type="text" name="username" class="form-control" placeholder="Type your message...">
+                                <label for="username">Type your name</label>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="color">Choose a color <span id="color-sample" class="badge rounded-circle p-2 align-middle mx-1"> </span></label>
+                                <select id="color-picker" class="form-select" name="color">
+                                    <option value="blue">Blue</option>
+                                    <option value="indigo">Indigo</option>
+                                    <option value="purple">Purple</option>
+                                    <option value="pink">Pink</option>
+                                    <option value="red">Red</option>
+                                    <option value="orange">Orange</option>
+                                    <option value="green">Green</option>
+                                    <option value="gray">Gray</option>
+                                    <option value="black">Black</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade d-none" tabindex="-1"></div>
+    <script src="js/chat.js"></script>
+</body>
+
+</html>

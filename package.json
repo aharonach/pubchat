@@ -1,0 +1,15 @@
+{
+  "name": "pubchat",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A simple chat application using websocket.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Aharon Achildiev",
+  "dependencies": {
+    "serve-handler": "^6.1.3",
+    "ws": "^8.8.0"
+  }
+}
